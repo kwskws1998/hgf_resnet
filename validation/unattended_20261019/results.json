@@ -1,0 +1,92 @@
+{
+  "Vast_instance_accessed": false,
+  "cuda_profiled": false,
+  "environment": {
+    "cuda_available": false,
+    "cuda_runtime": null,
+    "numpy": "2.0.0",
+    "python": "3.12.11",
+    "torch": "2.12.1",
+    "torchvision": "0.27.1"
+  },
+  "generated_image_CPU_preflight": "cpu_preflight.json",
+  "kind": "unattended_runner_cpu_validation",
+  "novelty_or_superiority_established": false,
+  "real_cifar_training_performed": false,
+  "recorded_at": "2026-10-19T03:59:06.239878+00:00",
+  "setup": {
+    "GPU_packages_installed": false,
+    "dry_run": "setup_dry_run.json",
+    "dry_run_exit_code": 0,
+    "tests": "tests/test_setup_environment.py"
+  },
+  "smoke": {
+    "cuda_profiled": false,
+    "kind": "offline_fake_image_smoke_only",
+    "methods_completed": [
+      "frozen",
+      "adamw",
+      "zero_q",
+      "fixed_q",
+      "adaptive_qr",
+      "hierarchical_qr"
+    ],
+    "real_data_efficacy_evidence": false
+  },
+  "smoke_checkpoints_in_archive": false,
+  "smoke_steps_per_arm": 8,
+  "source_and_test_sha256": {
+    "configs/pilot.json": "7eb935771d215bf874856ba3b1098e8ded34ada9f5f8310847bee991d86a2e7e",
+    "pyproject.toml": "523a8f7468005c57eb2f9d6aad76e6f5fe00ed93cc2f87cec491d3c407fc8a85",
+    "run_experiments.py": "83383950c57118befcee11050222554b98c08772ee7d9acdf75b0c76e7357535",
+    "setup_environment.py": "a74454b56070595cf162f4da9c012c1fda57d2b5fdc4208be100c0c110cf391a",
+    "src/hgfvision/__init__.py": "6046e18aa63897dcb0ae08eb04c1374b2a73cc75f9636f35393727ef5387faba",
+    "src/hgfvision/__main__.py": "e414341ea53ddc25639b917c86472bae052f73e11eae3d517cab3be0cad73e93",
+    "src/hgfvision/benchmark.py": "7de4d3a5038e8ee4c5257f9070c83001eb7c6fc3fe7955c6ab038e4e6cfcfb2b",
+    "src/hgfvision/cli.py": "5d596e222c455a1610fd00b0130dad12cbbeb79b26bc7f60eb5cd783042201d7",
+    "src/hgfvision/data.py": "6fe71ff458eff552507db3ffdd1db775a589266cdf2adb27ea106b4baad06107",
+    "src/hgfvision/engine.py": "f644aa12377cb1a046816e5c2ec977b6430ba618b38a1ea968cb36c6096f2cfc",
+    "src/hgfvision/filters.py": "b39ffb0be9700f080ad96aa098f2492a54a24a33d03480fcf6ee89effcb61e29",
+    "src/hgfvision/models.py": "f7557109584e1f3f4763e31edbba7e0c5bba05c7464eebf171052689b034a52b",
+    "src/hgfvision/synthetic.py": "2874c6c32979c9918d9e86d246788c86a795fecd6db0c74568e6157e225cbc38",
+    "src/hgfvision/training.py": "b109409f1553a9a72d181b94a6b8a4a8aaed4416ab7b3b281b04296d327af1d2",
+    "tests/test_cli.py": "1e2fd637f3a989ce41ebfe016518b89d6a9078f9aca6b346858c9ee5b0d237ef",
+    "tests/test_data.py": "8e40199cb9a90c615822aaf687512d370729281fe2711ca22d9cacfbcd556378",
+    "tests/test_engine.py": "079589f17450b3908fc8c6b4ed86ceb367dcc55cd608cd2b31ec164d0f461b3b",
+    "tests/test_filters.py": "795c575f2803feac9e50481e8afd7ceea5ea478b258088566a29fae7878ef1d3",
+    "tests/test_models.py": "8d639baffe1b1339fb3a07121334f4f27d085964b4343204ccff241784049b5e",
+    "tests/test_setup_environment.py": "286d7be27976284b0546580947970d2b784c477f412c29069fad11b8e6b45041",
+    "tests/test_training_resume.py": "f51a1e936be21761e1776288ad2925ff010f7dc030b019764419a254f17d2a9f",
+    "tests/test_unattended.py": "68235898663c3f72d96c0e226d545f64ce2b4215faaa775f7dbd31be2a107b14"
+  },
+  "source_resume": {
+    "checks": [
+      "model",
+      "optimizer",
+      "scheduler",
+      "RNG",
+      "metric history excluding wall time"
+    ],
+    "exact_cpu_equivalence": "tested",
+    "tests": "tests/test_training_resume.py"
+  },
+  "unattended_runner": {
+    "checks": [
+      "POSIX inherited lock after worker death",
+      "stdlib-only status",
+      "immutable plan and runtime versions",
+      "artifact corruption rejection",
+      "source epoch resume",
+      "fresh adaptation retries",
+      "independent arm failure isolation"
+    ],
+    "tests": "tests/test_unattended.py"
+  },
+  "unit_and_integration_tests": {
+    "command": "python -m pytest -q",
+    "failed": 0,
+    "passed": 159,
+    "seconds": 22.11,
+    "stdout": "pytest_stdout.txt"
+  }
+}

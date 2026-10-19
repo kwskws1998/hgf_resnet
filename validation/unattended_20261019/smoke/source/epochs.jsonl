@@ -1,0 +1,1 @@
+{"epoch": 0, "training_loss": 2.376769026120504, "validation": {"accuracy": 0.05, "cross_entropy": 2.5409992694854737, "brier": 0.9506787180900573}, "learning_rate": 0.01, "seconds": 2.2636453750019427}

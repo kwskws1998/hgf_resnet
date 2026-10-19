@@ -1,0 +1,8 @@
+{"step": 0, "phase": "stable", "samples": 2, "indices": [76, 95], "update_seconds": 0.009207791008520871, "accuracy": 0.0, "cross_entropy": 2.3981757164001465, "brier": 0.9413370490074158}
+{"step": 1, "phase": "stable", "samples": 2, "indices": [199, 176], "update_seconds": 0.010601667017908767, "accuracy": 0.0, "cross_entropy": 2.5514450073242188, "brier": 0.972196102142334}
+{"step": 2, "phase": "shift", "samples": 2, "indices": [59, 169], "update_seconds": 0.010849000012967736, "accuracy": 0.0, "cross_entropy": 3.3582019805908203, "brier": 1.1254651546478271}
+{"step": 3, "phase": "shift", "samples": 2, "indices": [77, 78], "update_seconds": 0.009765541995875537, "accuracy": 0.0, "cross_entropy": 3.4141249656677246, "brier": 1.118598461151123}
+{"step": 4, "phase": "noise", "samples": 2, "indices": [121, 113], "update_seconds": 0.009950542007572949, "accuracy": 0.5, "cross_entropy": 1.8601410388946533, "brier": 0.7989696264266968}
+{"step": 5, "phase": "noise", "samples": 2, "indices": [31, 120], "update_seconds": 0.009391582978423685, "accuracy": 0.0, "cross_entropy": 2.7905304431915283, "brier": 1.0129200220108032}
+{"step": 6, "phase": "recovery", "samples": 2, "indices": [69, 7], "update_seconds": 0.009135792002780363, "accuracy": 0.0, "cross_entropy": 3.2715530395507812, "brier": 1.115578055381775}
+{"step": 7, "phase": "recovery", "samples": 2, "indices": [33, 184], "update_seconds": 0.009020792000228539, "accuracy": 0.5, "cross_entropy": 1.463376522064209, "brier": 0.6901161670684814}

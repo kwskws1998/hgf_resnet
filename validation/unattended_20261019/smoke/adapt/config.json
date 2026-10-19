@@ -1,0 +1,50 @@
+{
+  "adamw": {
+    "learning_rate": 0.001,
+    "loss": "brier",
+    "weight_decay": 0.0
+  },
+  "batch_size": 2,
+  "filter": {
+    "drift_max": 1.0,
+    "drift_min": 1e-06,
+    "ema_rate": 0.05,
+    "hyper_drift": 0.02,
+    "hyper_variance": 1.0,
+    "initial_p": 0.1,
+    "initial_q": 0.0001,
+    "initial_r": 0.05,
+    "p_ceiling": 100.0,
+    "p_floor": 1e-10,
+    "parent_drift": 0.001,
+    "parent_variance": 1.0,
+    "q_max": 1.0,
+    "q_min": 1e-10,
+    "r_max": 10.0,
+    "r_min": 1e-05
+  },
+  "max_observations": 320,
+  "phases": [
+    {
+      "name": "stable",
+      "steps": 2
+    },
+    {
+      "brightness": 0.7,
+      "name": "shift",
+      "steps": 2
+    },
+    {
+      "brightness": 0.7,
+      "name": "noise",
+      "noise_std": 0.1,
+      "steps": 2
+    },
+    {
+      "brightness": 0.7,
+      "name": "recovery",
+      "steps": 2
+    }
+  ],
+  "rank": 4
+}

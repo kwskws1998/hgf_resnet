@@ -1,0 +1,134 @@
+{
+  "checkpoint_sha256": "d93b6c11e3865c11f458f69c7036e99fa519088af1954c0af7f2d305c3058ad7",
+  "clean_evaluation_split": "source_val",
+  "config": {
+    "adamw": {
+      "learning_rate": 0.001,
+      "loss": "brier",
+      "weight_decay": 0.0
+    },
+    "batch_size": 2,
+    "filter": {
+      "drift_max": 1.0,
+      "drift_min": 1e-06,
+      "ema_rate": 0.05,
+      "hyper_drift": 0.02,
+      "hyper_variance": 1.0,
+      "initial_p": 0.1,
+      "initial_q": 0.0001,
+      "initial_r": 0.05,
+      "p_ceiling": 100.0,
+      "p_floor": 1e-10,
+      "parent_drift": 0.001,
+      "parent_variance": 1.0,
+      "q_max": 1.0,
+      "q_min": 1e-10,
+      "r_max": 10.0,
+      "r_min": 1e-05
+    },
+    "max_observations": 320,
+    "phases": [
+      {
+        "name": "stable",
+        "steps": 2
+      },
+      {
+        "brightness": 0.7,
+        "name": "shift",
+        "steps": 2
+      },
+      {
+        "brightness": 0.7,
+        "name": "noise",
+        "noise_std": 0.1,
+        "steps": 2
+      },
+      {
+        "brightness": 0.7,
+        "name": "recovery",
+        "steps": 2
+      }
+    ],
+    "rank": 4
+  },
+  "dataset": "fake_smoke_only",
+  "environment": {
+    "cuda_runtime": null,
+    "device": "cpu",
+    "python": "3.12.11",
+    "source_sha256": {
+      "__init__.py": "6046e18aa63897dcb0ae08eb04c1374b2a73cc75f9636f35393727ef5387faba",
+      "__main__.py": "e414341ea53ddc25639b917c86472bae052f73e11eae3d517cab3be0cad73e93",
+      "benchmark.py": "7de4d3a5038e8ee4c5257f9070c83001eb7c6fc3fe7955c6ab038e4e6cfcfb2b",
+      "cli.py": "5d596e222c455a1610fd00b0130dad12cbbeb79b26bc7f60eb5cd783042201d7",
+      "data.py": "6fe71ff458eff552507db3ffdd1db775a589266cdf2adb27ea106b4baad06107",
+      "engine.py": "f644aa12377cb1a046816e5c2ec977b6430ba618b38a1ea968cb36c6096f2cfc",
+      "filters.py": "b39ffb0be9700f080ad96aa098f2492a54a24a33d03480fcf6ee89effcb61e29",
+      "models.py": "f7557109584e1f3f4763e31edbba7e0c5bba05c7464eebf171052689b034a52b",
+      "synthetic.py": "2874c6c32979c9918d9e86d246788c86a795fecd6db0c74568e6157e225cbc38",
+      "training.py": "b109409f1553a9a72d181b94a6b8a4a8aaed4416ab7b3b281b04296d327af1d2"
+    },
+    "torch": "2.12.1",
+    "torchvision": "0.27.1"
+  },
+  "method": "hierarchical_qr",
+  "noise_seed": 0,
+  "observation_model": "Gaussian surrogate on softmax probabilities",
+  "order_seed": 0,
+  "partition": "dev",
+  "proposed_method_status": "HGF-inspired Fisher approximation; not exact generalized-HGF reproduction",
+  "seed": 0,
+  "source_metadata": {
+    "architecture": "cifar_resnet18",
+    "dataset": "fake_smoke_only",
+    "dataset_length": 200,
+    "dataset_sha256": "5c7f0e84fa7baa6060381f82ff7c7739605f4bd68f72472cbe6659af41a495cd",
+    "epochs_requested": 1,
+    "num_classes": 10,
+    "selected_epoch": 0,
+    "source_environment": {
+      "cuda_runtime": null,
+      "device": "cpu",
+      "python": "3.12.11",
+      "source_sha256": {
+        "__init__.py": "6046e18aa63897dcb0ae08eb04c1374b2a73cc75f9636f35393727ef5387faba",
+        "__main__.py": "e414341ea53ddc25639b917c86472bae052f73e11eae3d517cab3be0cad73e93",
+        "benchmark.py": "7de4d3a5038e8ee4c5257f9070c83001eb7c6fc3fe7955c6ab038e4e6cfcfb2b",
+        "cli.py": "5d596e222c455a1610fd00b0130dad12cbbeb79b26bc7f60eb5cd783042201d7",
+        "data.py": "6fe71ff458eff552507db3ffdd1db775a589266cdf2adb27ea106b4baad06107",
+        "engine.py": "f644aa12377cb1a046816e5c2ec977b6430ba618b38a1ea968cb36c6096f2cfc",
+        "filters.py": "b39ffb0be9700f080ad96aa098f2492a54a24a33d03480fcf6ee89effcb61e29",
+        "models.py": "f7557109584e1f3f4763e31edbba7e0c5bba05c7464eebf171052689b034a52b",
+        "synthetic.py": "2874c6c32979c9918d9e86d246788c86a795fecd6db0c74568e6157e225cbc38",
+        "training.py": "b109409f1553a9a72d181b94a6b8a4a8aaed4416ab7b3b281b04296d327af1d2"
+      },
+      "torch": "2.12.1",
+      "torchvision": "0.27.1"
+    },
+    "source_training": {
+      "augmentation": "crop_flip",
+      "batch_size": 20,
+      "lr": 0.01,
+      "optimizer": "sgd_momentum_0.9",
+      "scheduler": "cosine",
+      "weight_decay": 0.0005
+    },
+    "split_hashes": {
+      "dev": "d5a2c5af43a2c0f0962bb8693d241d8c410802295bd0dd152867f6ca6e1ba9ae",
+      "source": "8ebd66ad3664383f576278d0bd5988651d22d238b71e49f8bebf58814d8153a2",
+      "source_val": "433438ea77a40adf346c074b13b5689bcb57fec92e5d58e157a135de06188404",
+      "stream": "65bb3be5d7a3332b3364cc11dd281e4155522e07ac2bfb3f1240d8116ed1fca3"
+    },
+    "split_seed": 0,
+    "training_seed": 0,
+    "validation": {
+      "accuracy": 0.05,
+      "brier": 0.9506787180900573,
+      "cross_entropy": 2.5409992694854737
+    }
+  },
+  "status": "completed",
+  "stream_indices_sha256": "eb271099bdac299f982f5cedd36e45b84bc23ab30bc78d4856eb5e812fd4a3b0",
+  "trainable_parameters": 8192,
+  "tuning_status": "defaults unless explicitly overridden; no tuning claimed"
+}

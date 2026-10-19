@@ -1,0 +1,68 @@
+{
+  "architecture": "cifar_resnet18",
+  "checkpoint_sha256": "d93b6c11e3865c11f458f69c7036e99fa519088af1954c0af7f2d305c3058ad7",
+  "completed_epochs": 1,
+  "dataset": "fake_smoke_only",
+  "dataset_length": 200,
+  "dataset_sha256": "5c7f0e84fa7baa6060381f82ff7c7739605f4bd68f72472cbe6659af41a495cd",
+  "environment": {
+    "cuda_runtime": null,
+    "device": "cpu",
+    "python": "3.12.11",
+    "source_sha256": {
+      "__init__.py": "6046e18aa63897dcb0ae08eb04c1374b2a73cc75f9636f35393727ef5387faba",
+      "__main__.py": "e414341ea53ddc25639b917c86472bae052f73e11eae3d517cab3be0cad73e93",
+      "benchmark.py": "7de4d3a5038e8ee4c5257f9070c83001eb7c6fc3fe7955c6ab038e4e6cfcfb2b",
+      "cli.py": "5d596e222c455a1610fd00b0130dad12cbbeb79b26bc7f60eb5cd783042201d7",
+      "data.py": "6fe71ff458eff552507db3ffdd1db775a589266cdf2adb27ea106b4baad06107",
+      "engine.py": "f644aa12377cb1a046816e5c2ec977b6430ba618b38a1ea968cb36c6096f2cfc",
+      "filters.py": "b39ffb0be9700f080ad96aa098f2492a54a24a33d03480fcf6ee89effcb61e29",
+      "models.py": "f7557109584e1f3f4763e31edbba7e0c5bba05c7464eebf171052689b034a52b",
+      "synthetic.py": "2874c6c32979c9918d9e86d246788c86a795fecd6db0c74568e6157e225cbc38",
+      "training.py": "b109409f1553a9a72d181b94a6b8a4a8aaed4416ab7b3b281b04296d327af1d2"
+    },
+    "torch": "2.12.1",
+    "torchvision": "0.27.1"
+  },
+  "epochs_requested": 1,
+  "last_checkpoint_sha256": "01984bf66b581b3323cb229ea9f0d7a7674ea23942fcff765109ea7c8b0f8e77",
+  "next_epoch": 1,
+  "num_classes": 10,
+  "resumed": false,
+  "source_environment": {
+    "cuda_runtime": null,
+    "device": "cpu",
+    "python": "3.12.11",
+    "source_sha256": {
+      "__init__.py": "6046e18aa63897dcb0ae08eb04c1374b2a73cc75f9636f35393727ef5387faba",
+      "__main__.py": "e414341ea53ddc25639b917c86472bae052f73e11eae3d517cab3be0cad73e93",
+      "benchmark.py": "7de4d3a5038e8ee4c5257f9070c83001eb7c6fc3fe7955c6ab038e4e6cfcfb2b",
+      "cli.py": "5d596e222c455a1610fd00b0130dad12cbbeb79b26bc7f60eb5cd783042201d7",
+      "data.py": "6fe71ff458eff552507db3ffdd1db775a589266cdf2adb27ea106b4baad06107",
+      "engine.py": "f644aa12377cb1a046816e5c2ec977b6430ba618b38a1ea968cb36c6096f2cfc",
+      "filters.py": "b39ffb0be9700f080ad96aa098f2492a54a24a33d03480fcf6ee89effcb61e29",
+      "models.py": "f7557109584e1f3f4763e31edbba7e0c5bba05c7464eebf171052689b034a52b",
+      "synthetic.py": "2874c6c32979c9918d9e86d246788c86a795fecd6db0c74568e6157e225cbc38",
+      "training.py": "b109409f1553a9a72d181b94a6b8a4a8aaed4416ab7b3b281b04296d327af1d2"
+    },
+    "torch": "2.12.1",
+    "torchvision": "0.27.1"
+  },
+  "source_training": {
+    "augmentation": "crop_flip",
+    "batch_size": 20,
+    "lr": 0.01,
+    "optimizer": "sgd_momentum_0.9",
+    "scheduler": "cosine",
+    "weight_decay": 0.0005
+  },
+  "split_hashes": {
+    "dev": "d5a2c5af43a2c0f0962bb8693d241d8c410802295bd0dd152867f6ca6e1ba9ae",
+    "source": "8ebd66ad3664383f576278d0bd5988651d22d238b71e49f8bebf58814d8153a2",
+    "source_val": "433438ea77a40adf346c074b13b5689bcb57fec92e5d58e157a135de06188404",
+    "stream": "65bb3be5d7a3332b3364cc11dd281e4155522e07ac2bfb3f1240d8116ed1fca3"
+  },
+  "split_seed": 0,
+  "status": "completed",
+  "training_seed": 0
+}

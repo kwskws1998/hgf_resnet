@@ -6,6 +6,11 @@ an exact reproduction of generalized HGF and its benefit has not been establishe
 The mathematical contract and source excerpts are in [METHOD.md](METHOD.md).
 Completed checks and their limits are recorded in [VALIDATION.md](VALIDATION.md).
 
+For the one-command Vast.ai setup and finite unattended pilot, use
+[VAST_QUICKSTART.md](VAST_QUICKSTART.md). Source training now supports atomic
+per-epoch continuation; the runner verifies completed artifacts before skipping
+them and retries an interrupted adaptation arm from its original source model.
+
 ## Implemented experiment
 
 - CIFAR ResNet-18: 3x3 stride-one stem, no initial max pooling.
@@ -40,7 +45,8 @@ drift and observation noise, logs inferred Q/R, and includes an explicitly
 informed full-covariance Kalman reference. A successful command is not a claim
 that the proposed method wins or identifies both noise sources.
 
-Every output directory must be new. Runs are never silently overwritten.
+New runs require a new output directory. Explicit source-training and pipeline
+resume modes reuse verified checkpoints; runs are never silently overwritten.
 No network download occurs unless `--download` is supplied.
 
 ## Run the initial CIFAR-10 pilot
@@ -129,8 +135,11 @@ Each adaptation directory contains `manifest.json`, `steps.jsonl`,
 `summary.json`, and `final.pt`; failed runs record `failure.json`. Source
 checkpoints include training provenance and exact split hashes. The parent
 directory contains the actual stream indices and the resolved configuration.
-Checkpoints store state for auditing; automatic mid-stream resume is not
-implemented and must not be assumed safe.
+Source training supports `train-source --resume` with the same output directory
+and original training arguments. `last.pt` includes optimizer, scheduler, and
+random states at the last completed epoch. Adaptation checkpoints remain for
+auditing; automatic mid-stream adaptation resume is not implemented. The
+unattended runner retries an interrupted arm in a fresh attempt directory.
 
 ## Decision before expanding the project
 

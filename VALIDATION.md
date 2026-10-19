@@ -1,12 +1,16 @@
 # Validation performed
 
 This record distinguishes numerical correctness, executable image code, and
-empirical method evidence. Machine-readable details are in
-[validation/results.json](validation/results.json).
+empirical method evidence. The original scaffold results below are historical;
+their original code hashes are retained in
+[validation/results.json](validation/results.json). The unattended-run revision
+is recorded separately in
+[validation/unattended_20261019/results.json](validation/unattended_20261019/results.json).
 
 ## Numerical and integration checks
 
-`python -m pytest -q`: **82 passed, 0 failed**, 8.52 seconds on the local CPU.
+Original scaffold: `python -m pytest -q`: **82 passed, 0 failed**, 8.52 seconds on
+the local CPU. This is the historical test count, not the current suite size.
 
 The suite includes independent finite-difference derivatives, numerical
 Gaussian integration of Fisher information, dense/scalar Kalman reference
@@ -54,3 +58,28 @@ Raw per-step trajectories and phase-level summaries are retained under
 
 The next empirical step is source training and the development pilot on the
 target GPU, recording VRAM and update latency before scaling.
+
+## Unattended-run revision, 2026-10-19
+
+`python -m pytest -q`: **159 passed, 0 failed**, 22.11 seconds on the local CPU.
+
+The current revision adds environment preparation, a finite detached pipeline,
+atomic source-training continuation, and guarded reuse of completed stages.
+Its machine-readable validation record includes the current test count and
+source/test hashes. CPU generated-image smoke logs and a device-preflight
+report are retained beside that record. All six smoke arms completed eight
+steps each; the benchmark used generated images and CPU batch sizes 4/2.
+These timings are not RTX 4090 estimates.
+
+Interrupted two-epoch CPU source training was resumed and compared exactly
+with uninterrupted training, including model weights, optimizer, scheduler,
+random state, and metric history (excluding elapsed wall time). Separate
+subprocess tests exercised inherited locks after worker death. Mocked runner
+tests checked corrupted artifacts, immutable settings, failed-arm isolation,
+and source/adaptation retry boundaries. Setup tests and a dry run checked
+installation commands and launch ordering without installing GPU packages.
+
+No Vast.ai instance was rented or accessed during this validation. CUDA
+installation, real CIFAR-10 training, GPU memory fit, and GPU runtime remain
+unmeasured. The setup command will perform those device checks on the rented
+machine before starting the real-data pilot.

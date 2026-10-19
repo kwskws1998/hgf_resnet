@@ -1,0 +1,88 @@
+{
+  "dry_run": true,
+  "project": "/Users/wansookim/Documents/hgf_resnet",
+  "python": "/Users/wansookim/Documents/hgf_resnet/.venv/bin/python",
+  "mode": "project_venv",
+  "torch_policy": {
+    "torch": "2.12.1",
+    "torchvision": "0.27.1",
+    "wheel_index": "https://download.pytorch.org/whl/cu126"
+  },
+  "commands": [
+    [
+      "nvidia-smi",
+      "--query-gpu=name,driver_version,memory.total,memory.free",
+      "--format=csv,noheader,nounits"
+    ],
+    [
+      "/opt/anaconda3/bin/python",
+      "-m",
+      "venv",
+      "/Users/wansookim/Documents/hgf_resnet/.venv"
+    ],
+    [
+      "/Users/wansookim/Documents/hgf_resnet/.venv/bin/python",
+      "-m",
+      "pip",
+      "--isolated",
+      "install",
+      "torch==2.12.1",
+      "torchvision==0.27.1",
+      "--index-url",
+      "https://download.pytorch.org/whl/cu126"
+    ],
+    [
+      "/Users/wansookim/Documents/hgf_resnet/.venv/bin/python",
+      "-c",
+      "<CUDA matrix multiplication and convolution backward probe>"
+    ],
+    [
+      "/Users/wansookim/Documents/hgf_resnet/.venv/bin/python",
+      "-m",
+      "pip",
+      "--isolated",
+      "install",
+      "--constraint",
+      "<temporary-constraints.txt>",
+      "--editable",
+      ".[test]"
+    ],
+    [
+      "/Users/wansookim/Documents/hgf_resnet/.venv/bin/python",
+      "-c",
+      "<repeat CUDA probe and verify versions unchanged>"
+    ],
+    [
+      "/Users/wansookim/Documents/hgf_resnet/.venv/bin/python",
+      "-c",
+      "import hgfvision; print(hgfvision.__file__)"
+    ],
+    [
+      "/Users/wansookim/Documents/hgf_resnet/.venv/bin/python",
+      "-m",
+      "pip",
+      "--isolated",
+      "freeze"
+    ],
+    [
+      "/Users/wansookim/Documents/hgf_resnet/.venv/bin/python",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    [
+      "/Users/wansookim/Documents/hgf_resnet/.venv/bin/python",
+      "/Users/wansookim/Documents/hgf_resnet/run_experiments.py",
+      "--detach",
+      "--output",
+      "/Users/wansookim/Documents/hgf_resnet/runs/first_pilot"
+    ]
+  ],
+  "reports": [
+    "/Users/wansookim/Documents/hgf_resnet/environment_setup.json",
+    "/Users/wansookim/Documents/hgf_resnet/environment_freeze.txt"
+  ],
+  "tests": "required",
+  "pilot_output": "/Users/wansookim/Documents/hgf_resnet/runs/first_pilot",
+  "setup_runs_in_foreground": true
+}

@@ -1,0 +1,13 @@
+{
+  "cuda_profiled": false,
+  "kind": "offline_fake_image_smoke_only",
+  "methods_completed": [
+    "frozen",
+    "adamw",
+    "zero_q",
+    "fixed_q",
+    "adaptive_qr",
+    "hierarchical_qr"
+  ],
+  "real_data_efficacy_evidence": false
+}

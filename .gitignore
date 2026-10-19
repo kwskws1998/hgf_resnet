@@ -6,3 +6,7 @@ build/
 dist/
 data/
 runs/
+.venv/
+.unattended.lock
+environment_setup.json
+environment_freeze.txt

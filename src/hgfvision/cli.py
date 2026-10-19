@@ -64,68 +64,9 @@ def read_config(path: str | Path | None) -> dict:
 
 
 def train_source(args, raw_train=None, fake: bool = False) -> Path:
-    """Train on source indices; choose checkpoint using source_val only."""
-    device = select_device(args.device)
-    seed_everything(args.seed)
-    output = Path(args.output)
-    output.mkdir(parents=True, exist_ok=False)
-    if raw_train is None:
-        raw_train, _ = load_cifar10(args.data_root, download=args.download)
-    splits = make_splits(len(raw_train), args.split_seed)
-    train_data = SourceDataset(raw_train, splits["source"], seed=args.seed, augment=True)
-    val_data = CleanDataset(raw_train, splits["source_val"])
-    if len(train_data) < 2 or not len(val_data):
-        raise ValueError("Source and validation splits are too small")
-    generator = torch.Generator().manual_seed(args.seed)
-    loader = DataLoader(train_data, batch_size=args.batch_size, shuffle=True, generator=generator, num_workers=args.workers)
-    val_loader = DataLoader(val_data, batch_size=args.eval_batch_size, shuffle=False, num_workers=args.workers)
-    model = freeze_for_source(build_model(adapters=False)).to(device)
-    optimizer = torch.optim.SGD(model.parameters(), lr=args.lr, momentum=0.9, weight_decay=args.weight_decay)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs)
-    metadata = {
-        "dataset": "fake_smoke_only" if fake else "cifar10", "dataset_length": len(raw_train),
-        "split_seed": args.split_seed, "training_seed": args.seed,
-        "split_hashes": {key: json_hash(value) for key, value in splits.items()},
-        "num_classes": 10, "architecture": "cifar_resnet18", "epochs_requested": args.epochs,
-        "source_training": {"batch_size": args.batch_size, "lr": args.lr, "weight_decay": args.weight_decay, "optimizer": "sgd_momentum_0.9", "scheduler": "cosine", "augmentation": "crop_flip"},
-        "source_environment": environment(device),
-    }
-    write_json(output / "splits.json", splits)
-    write_json(output / "manifest.json", {**metadata, "environment": environment(device), "status": "running"})
-    best_accuracy = -1.0
-    checkpoint = output / "source.pt"
-    try:
-        with (output / "epochs.jsonl").open("w") as handle:
-            for epoch in range(args.epochs):
-                train_data.set_epoch(epoch)
-                model.train()
-                total_loss, count = 0.0, 0
-                tick = time.perf_counter()
-                for x, y in loader:
-                    x, y = x.to(device), y.to(device)
-                    optimizer.zero_grad(set_to_none=True)
-                    loss = nn.functional.cross_entropy(model(x), y)
-                    if not torch.isfinite(loss):
-                        raise FloatingPointError("Nonfinite source loss")
-                    loss.backward()
-                    optimizer.step()
-                    total_loss += float(loss.detach()) * len(y)
-                    count += len(y)
-                val = evaluate(model, val_loader, device)
-                row = {"epoch": epoch, "training_loss": total_loss / count, "validation": val, "learning_rate": scheduler.get_last_lr()[0], "seconds": time.perf_counter() - tick}
-                handle.write(json.dumps(row, allow_nan=False) + "\n")
-                handle.flush()
-                print(json.dumps(row), flush=True)
-                if val["accuracy"] > best_accuracy:
-                    best_accuracy = val["accuracy"]
-                    torch.save({"model": {key: value.cpu() for key, value in model.state_dict().items()}, "metadata": {**metadata, "selected_epoch": epoch, "validation": val}}, checkpoint)
-                scheduler.step()
-        write_json(output / "manifest.json", {**metadata, "environment": environment(device), "status": "completed", "checkpoint_sha256": file_hash(checkpoint)})
-    except (Exception, KeyboardInterrupt) as error:
-        write_json(output / "failure.json", {"type": type(error).__name__, "message": str(error)})
-        write_json(output / "manifest.json", {**metadata, "environment": environment(device), "status": "failed"})
-        raise
-    return checkpoint
+    """Delegate source training while retaining the public CLI call signature."""
+    from .training import train_source as resumable_train_source
+    return resumable_train_source(args, raw_train=raw_train, fake=fake)
 
 
 def adapt(args, raw_train=None, raw_test=None, fake: bool = False, config_override=None) -> list[dict]:
@@ -253,6 +194,7 @@ def main() -> None:
         command.add_argument("--eval-batch-size", type=positive_int, default=128)
     source.add_argument("--split-seed", type=int, default=0)
     source.add_argument("--epochs", type=positive_int, default=100)
+    source.add_argument("--resume", action="store_true", help="Resume output/last.pt with the original total epoch budget")
     source.add_argument("--batch-size", type=positive_int, default=128)
     source.add_argument("--lr", type=float, default=0.1)
     source.add_argument("--weight-decay", type=float, default=0.0005)

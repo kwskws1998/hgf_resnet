@@ -1,0 +1,48 @@
+{
+  "clean_accuracy_change": 0.0,
+  "clean_after": {
+    "accuracy": 0.05,
+    "brier": 0.9241499662399292,
+    "cross_entropy": 2.3950247287750246
+  },
+  "clean_before": {
+    "accuracy": 0.05,
+    "brier": 0.9506787180900573,
+    "cross_entropy": 2.5409992694854737
+  },
+  "mean_update_seconds": 0.03642036475503119,
+  "method": "zero_q",
+  "peak_allocated_bytes": null,
+  "peak_reserved_bytes": null,
+  "phase_metrics": {
+    "noise": {
+      "accuracy": 0.0,
+      "brier": 0.918270081281662,
+      "cross_entropy": 2.38128399848938
+    },
+    "recovery": {
+      "accuracy": 0.0,
+      "brier": 1.036313533782959,
+      "cross_entropy": 2.7120800018310547
+    },
+    "shift": {
+      "accuracy": 0.0,
+      "brier": 1.0878223776817322,
+      "cross_entropy": 3.270187258720398
+    },
+    "stable": {
+      "accuracy": 0.0,
+      "brier": 0.9556083381175995,
+      "cross_entropy": 2.4709951877593994
+    }
+  },
+  "prequential": {
+    "accuracy": 0.0,
+    "brier": 0.9995035827159882,
+    "cross_entropy": 2.708636611700058
+  },
+  "samples": 16,
+  "status": "completed",
+  "steps": 8,
+  "wall_seconds": 0.6087866660091095
+}
