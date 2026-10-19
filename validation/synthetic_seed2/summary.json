@@ -1,0 +1,174 @@
+{
+  "environment": {
+    "cuda_runtime": null,
+    "device": "cpu",
+    "python": "3.12.11",
+    "source_sha256": {
+      "__init__.py": "6046e18aa63897dcb0ae08eb04c1374b2a73cc75f9636f35393727ef5387faba",
+      "__main__.py": "e414341ea53ddc25639b917c86472bae052f73e11eae3d517cab3be0cad73e93",
+      "cli.py": "8074f193bf76524133997aac10c483548ed6351da9949a54bec4577252646c94",
+      "data.py": "6fe71ff458eff552507db3ffdd1db775a589266cdf2adb27ea106b4baad06107",
+      "engine.py": "f644aa12377cb1a046816e5c2ec977b6430ba618b38a1ea968cb36c6096f2cfc",
+      "filters.py": "b39ffb0be9700f080ad96aa098f2492a54a24a33d03480fcf6ee89effcb61e29",
+      "models.py": "f7557109584e1f3f4763e31edbba7e0c5bba05c7464eebf171052689b034a52b",
+      "synthetic.py": "2874c6c32979c9918d9e86d246788c86a795fecd6db0c74568e6157e225cbc38"
+    },
+    "torch": "2.12.1",
+    "torchvision": "0.27.1"
+  },
+  "filter_config": {
+    "drift_max": 1.0,
+    "drift_min": 1e-06,
+    "ema_rate": 0.05,
+    "hyper_drift": 0.02,
+    "hyper_variance": 1.0,
+    "initial_p": 0.1,
+    "initial_q": 0.0001,
+    "initial_r": 0.02,
+    "p_ceiling": 100.0,
+    "p_floor": 1e-10,
+    "parent_drift": 0.001,
+    "parent_variance": 1.0,
+    "q_max": 1.0,
+    "q_min": 1e-10,
+    "r_max": 10.0,
+    "r_min": 1e-05
+  },
+  "interpretation": "Defaults are untuned. Inspect separation and tracking across multiple seeds before any efficacy claim.",
+  "kind": "synthetic_mechanism_probe_not_vision_efficacy",
+  "oracle_caveat": "Oracle has true Q/R and a full parameter covariance; it is an informed reference, not a fair competitor.",
+  "results": {
+    "adaptive_qr": {
+      "drift_high_noise": {
+        "posterior_parameter_mse": 0.03623593549709767,
+        "prequential_noiseless_mse": 0.05058648513047956,
+        "tail_mean_q": 0.010537759363651276,
+        "tail_mean_r": 0.2845445904135704
+      },
+      "drift_low_noise": {
+        "posterior_parameter_mse": 0.04859448313509347,
+        "prequential_noiseless_mse": 0.06670155992964283,
+        "tail_mean_q": 0.02137285102144233,
+        "tail_mean_r": 0.035698154512792825
+      },
+      "stable_high_noise": {
+        "posterior_parameter_mse": 0.003285698817053344,
+        "prequential_noiseless_mse": 0.003117199101179722,
+        "tail_mean_q": 9.92853532807203e-05,
+        "tail_mean_r": 0.277148542702198
+      },
+      "stable_low_noise": {
+        "posterior_parameter_mse": 0.0008282199945097091,
+        "prequential_noiseless_mse": 0.0009105148302296584,
+        "tail_mean_q": 9.855617725406773e-05,
+        "tail_mean_r": 0.02086157649755478
+      }
+    },
+    "fixed_q": {
+      "drift_high_noise": {
+        "posterior_parameter_mse": 0.24876122694462538,
+        "prequential_noiseless_mse": 0.26579744735732674,
+        "tail_mean_q": 9.99999901978299e-05,
+        "tail_mean_r": 0.5324143195152282
+      },
+      "drift_low_noise": {
+        "posterior_parameter_mse": 0.18991102416068315,
+        "prequential_noiseless_mse": 0.20865638324990868,
+        "tail_mean_q": 9.99999901978299e-05,
+        "tail_mean_r": 0.26469710409641267
+      },
+      "stable_high_noise": {
+        "posterior_parameter_mse": 0.0031855057722714264,
+        "prequential_noiseless_mse": 0.003074020467756782,
+        "tail_mean_q": 9.99999901978299e-05,
+        "tail_mean_r": 0.2762430676817894
+      },
+      "stable_low_noise": {
+        "posterior_parameter_mse": 0.0008211831485823495,
+        "prequential_noiseless_mse": 0.000900283452738222,
+        "tail_mean_q": 9.99999901978299e-05,
+        "tail_mean_r": 0.020848331078886985
+      }
+    },
+    "hierarchical_qr": {
+      "drift_high_noise": {
+        "posterior_parameter_mse": 0.03648775918874889,
+        "prequential_noiseless_mse": 0.05134860590100288,
+        "tail_mean_q": 0.012618379392661154,
+        "tail_mean_r": 0.2928439572453499
+      },
+      "drift_low_noise": {
+        "posterior_parameter_mse": 0.03580964251188561,
+        "prequential_noiseless_mse": 0.0499499559472315,
+        "tail_mean_q": 0.018202315957751125,
+        "tail_mean_r": 0.025242329128086567
+      },
+      "stable_high_noise": {
+        "posterior_parameter_mse": 0.004082855480664876,
+        "prequential_noiseless_mse": 0.003851820948621025,
+        "tail_mean_q": 0.00010202045406913384,
+        "tail_mean_r": 0.29590158119797705
+      },
+      "stable_low_noise": {
+        "posterior_parameter_mse": 0.0008281543289558612,
+        "prequential_noiseless_mse": 0.0009099853056432039,
+        "tail_mean_q": 9.861189559160266e-05,
+        "tail_mean_r": 0.02068603515625
+      }
+    },
+    "oracle_full_kf": {
+      "drift_high_noise": {
+        "posterior_parameter_mse": 0.033906827364116904,
+        "prequential_noiseless_mse": 0.04770281046337914,
+        "tail_mean_q": 0.01,
+        "tail_mean_r": 0.3
+      },
+      "drift_low_noise": {
+        "posterior_parameter_mse": 0.008471036868868395,
+        "prequential_noiseless_mse": 0.020894826995208858,
+        "tail_mean_q": 0.01,
+        "tail_mean_r": 0.02
+      },
+      "stable_high_noise": {
+        "posterior_parameter_mse": 0.00266354479448637,
+        "prequential_noiseless_mse": 0.0025520459325343837,
+        "tail_mean_q": 0.0001,
+        "tail_mean_r": 0.3
+      },
+      "stable_low_noise": {
+        "posterior_parameter_mse": 0.000805036303208908,
+        "prequential_noiseless_mse": 0.0008861815833915898,
+        "tail_mean_q": 0.0001,
+        "tail_mean_r": 0.02
+      }
+    },
+    "zero_q": {
+      "drift_high_noise": {
+        "posterior_parameter_mse": 2.231828535795212,
+        "prequential_noiseless_mse": 2.300803703069687,
+        "tail_mean_q": 0.0,
+        "tail_mean_r": 2.776502571105957
+      },
+      "drift_low_noise": {
+        "posterior_parameter_mse": 0.8076627901941538,
+        "prequential_noiseless_mse": 0.7886620056349785,
+        "tail_mean_q": 0.0,
+        "tail_mean_r": 0.9468700408935546
+      },
+      "stable_high_noise": {
+        "posterior_parameter_mse": 0.005218113657319918,
+        "prequential_noiseless_mse": 0.005078209401690401,
+        "tail_mean_q": 0.0,
+        "tail_mean_r": 0.27786921441555024
+      },
+      "stable_low_noise": {
+        "posterior_parameter_mse": 0.002085066558793187,
+        "prequential_noiseless_mse": 0.00216858116664298,
+        "tail_mean_q": 0.0,
+        "tail_mean_r": 0.022325726598501204
+      }
+    }
+  },
+  "seed": 2,
+  "steps_per_phase": 100
+}
